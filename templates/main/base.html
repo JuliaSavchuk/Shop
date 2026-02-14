@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Flowers-Shop{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Flowers-Shop</h1>
+      <nav>
+        <a href="{% url 'main:product_list' %}">Каталог</a> |
+        <a href="/admin/">Адмінка</a>
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <p>&copy; 2026 Інтернет-магазин</p>
+    </footer>
+  </body>
+</html>

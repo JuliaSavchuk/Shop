@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %} {% load static %} {% block title %}Каталог
+товарів{% endblock %} {% block content %}
+<h2>Каталог товарів</h2>
+<div class="products-grid">
+  {% for product in products %}
+  <div class="product-card">
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+    {% endif %}
+    <h3>{{ product.name }}</h3>
+    <p><strong>Ціна: {{ product.price }} грн</strong></p>
+    <p>{{ product.description|truncatewords:30 }}</p>
+    <p>Оновлено: {{ product.updated_at|date:"d.m.Y" }}</p>
+    <p>
+      {% if product.is_available %}Доступний{% else %}Недоступний{% endif %}
+    </p>
+  </div>
+  {% empty %}
+  <p>Товари відсутні.</p>
+  {% endfor %}
+</div>
+{% endblock %}
